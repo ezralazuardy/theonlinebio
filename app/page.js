@@ -34,9 +34,15 @@ export default function Home() {
             </p>
             <div className="flex space-x-4">
               <SubscribeButton />
-              <span className="mt-1 pt-0.5 text-sm">or</span>
-              <Button asChild>
-                <Link href="/">Talk to Us</Link>
+              <span className="mt-2 text-sm">or</span>
+              <Button variant="secondary" asChild>
+                <Link
+                  href={process.env.NEXT_PUBLIC_APPOINTMENT_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Talk to Us
+                </Link>
               </Button>
             </div>
           </div>

@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "The Online Bio",
+  title: "The Online Bio™",
   description: "Your only place for an online bio.",
 };
 

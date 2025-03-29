@@ -31,7 +31,7 @@ export default function Background() {
             isImageLoaded ? "opacity-40" : "opacity-0"
           }`}
           fill
-          onLoadingComplete={() => setIsImageLoaded(true)}
+          onLoad={() => setIsImageLoaded(true)}
         />
       )}
       <video

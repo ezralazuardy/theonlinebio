@@ -30,9 +30,16 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
             <Link href="/" className="text-lg font-semibold">
-              The Online Bio ™
+              The Online Bio™
             </Link>
-            <span className="text-xs opacity-70 mt-0.5">By Lazuardy</span>
+            <Link
+              href="https://www.lazuardy.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs opacity-70 mt-0.5 hover:underline"
+            >
+              By Lazuardy
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
