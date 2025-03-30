@@ -1,7 +1,8 @@
 "use client";
 
+import { Shell } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,11 +27,15 @@ export default function Header() {
 
   return (
     <header className={`fixed w-full z-10 transition-all duration-300`}>
-      <div className="mx-auto py-12 px-16">
+      <div className="mx-auto py-10 px-20">
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
-            <Link href="/" className="text-lg font-semibold">
-              The Online Bio™
+            <Link
+              href="/"
+              className="flex space-x-1.5 text-lg font-semibold transition-opacity duration-500 hover:opacity-80"
+            >
+              <Shell className="size-4 mt-1.5" />
+              <span>The Online Bio™</span>
             </Link>
             <Link
               href="https://www.lazuardy.tech"
@@ -38,29 +43,23 @@ export default function Header() {
               rel="noopener noreferrer"
               className="text-xs opacity-70 mt-0.5 hover:underline"
             >
-              By Lazuardy
+              by Lazuardy
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
-            <Link
-              href="/pricing"
-              className="hover:text-blue-600 transition-colors"
-            >
+          <nav className="hidden md:flex space-x-10">
+            <Link href="/pricing" className="hover:underline transition-colors">
               Pricing
             </Link>
-            <Link
-              href="/about"
-              className="hover:text-blue-600 transition-colors"
-            >
+            <Link href="/about" className="hover:underline transition-colors">
               About
             </Link>
-            <Link
-              href="/contact"
-              className="hover:text-blue-600 transition-colors"
-            >
+            <Link href="/contact" className="hover:underline transition-colors">
               Contact
+            </Link>
+            <Link href="/faq" className="hover:underline transition-colors">
+              FAQ
             </Link>
           </nav>
 
@@ -101,21 +100,21 @@ export default function Header() {
           <nav className="md:hidden py-4 space-y-4">
             <Link
               href="/pricing"
-              className="block hover:text-blue-600 transition-colors"
+              className="block hover:underline transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Pricing
             </Link>
             <Link
               href="/about"
-              className="block hover:text-blue-600 transition-colors"
+              className="block hover:underline transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="block hover:text-blue-600 transition-colors"
+              className="block hover:underline transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
