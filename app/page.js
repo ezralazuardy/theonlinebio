@@ -1,7 +1,7 @@
 import Background from "@/components/ui/background";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/ui/header";
-import { SubscribeButton } from "@/components/ui/subscribe-button";
+import InquiryForm from "@/components/ui/inquiry-form";
 import Link from "next/link";
 
 export default function Home() {
@@ -28,12 +28,12 @@ export default function Home() {
           <div className="flex flex-col w-full py-10 pl-16 pe-20 justify-center backdrop-filter backdrop-blur-md">
             <p className="text-sm text-justify mb-6">
               We help Professionals and Entrepreneurs build their online
-              presence, grow their business, and reach their target audience.
-              Are you ready to make an online portfolio or bio that stands out?
-              Let&apos;s get started!
+              presence and reach their target audience by creating an unique and
+              customized professional online portfolio, bio, or profile website
+              that stands out. All of our works are carefully hand-crafted.
             </p>
             <div className="flex space-x-4">
-              <SubscribeButton />
+              <InquiryForm />
               <span className="mt-2 text-sm">or</span>
               <Button variant="secondary" asChild>
                 <Link
