@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
+const year = new Date().getFullYear();
+
 export default function About() {
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -44,21 +46,25 @@ export default function About() {
               In a world flooded with generic AI-generated sites and
               cookie-cutter templates, standing out has never been harder. Your
               online presence should reflect who you are, and not some
-              mass-produced design with zero personality. That&apos;s why The
-              Online Bio™ exists. We craft unique, hand-built professional
-              bios, portfolios, and profile websites that make you look like a
-              leader, not just another name on the internet.
+              mass-produced design with zero personality.
             </p>
             <p className="flex w-full text-md text-justify text-neutral-300 mb-6">
-              We don&apos;t rely on AI to guess what you need or force you into
-              a soulless template. Every project we take on is custom-made with
-              precision, strategy, and a human touch. Whether you&apos;re an
-              entrepreneur, creative, or executive, we help you build an online
-              identity that truly represents you.
+              That&apos;s why The Online Bio™ exists. We craft unique,
+              hand-built professional bios, portfolios, and profile websites
+              that make you look like a leader, not just another name on the
+              internet.
             </p>
-            <p className="flex w-full text-md text-justify text-neutral-300">
+            <p className="flex w-full text-md text-justify text-neutral-300 mb-8">
               Because your personal brand deserves more than just a quick, cheap
               website.
+            </p>
+            <p className="flex w-full text-xs text-justify text-neutral-300">
+              The Online Bio™ is a service product from Lazuardy.
+              <br />
+              Copyright © {year} PT Inovasi Kolektif Digital (The Online Bio™,
+              LEXA, Lazuardy, We, Our, Us).
+              <br />
+              All rights reserved. www.lazuardy.tech. contact@lazuardy.tech.
             </p>
           </div>
         </div>
