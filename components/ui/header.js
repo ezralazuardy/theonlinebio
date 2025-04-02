@@ -1,12 +1,20 @@
 "use client";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Shell } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +36,7 @@ export default function Header() {
   return (
     <header className={`fixed w-full z-10 transition-all duration-300`}>
       <div className="mx-auto py-10 px-20">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-start">
           <div className="flex flex-col">
             <Link
               href="/"
@@ -37,29 +45,52 @@ export default function Header() {
               <Shell className="size-4 mt-1.5" />
               <span>The Online Bio™</span>
             </Link>
-            <Link
-              href="https://www.lazuardy.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs opacity-70 mt-0.5 hover:underline"
-            >
-              by Lazuardy
-            </Link>
+            <span className="w-auto">
+              <Link
+                href="https://www.lazuardy.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs opacity-70 hover:underline"
+              >
+                by Lazuardy
+              </Link>
+            </span>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-10">
-            <Link href="/pricing" className="hover:underline transition-colors">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href="#"
+                    className={`transition-colors opacity-60 ${pathname === "/showcase" ? "underline" : "hover:underline"}`}
+                  >
+                    Showcase
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent className="bg-white text-black" side="bottom">
+                  <p>Coming Soon!</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <Link
+              href="/pricing"
+              className={`transition-colors ${pathname === "/pricing" ? "underline" : "hover:underline"}`}
+            >
               Pricing
             </Link>
-            <Link href="/about" className="hover:underline transition-colors">
-              About
-            </Link>
-            <Link href="/contact" className="hover:underline transition-colors">
+            <Link
+              href="/contact"
+              className={`transition-colors ${pathname === "/contact" ? "underline" : "hover:underline"}`}
+            >
               Contact
             </Link>
-            <Link href="/faq" className="hover:underline transition-colors">
-              FAQ
+            <Link
+              href="/about"
+              className={`transition-colors ${pathname === "/about" ? "underline" : "hover:underline"}`}
+            >
+              About
             </Link>
           </nav>
 
@@ -98,26 +129,41 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <nav className="md:hidden py-4 space-y-4">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href="#"
+                    className={`transition-colors opacity-60 ${pathname === "/showcase" ? "underline" : "hover:underline"}`}
+                  >
+                    Showcase
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent className="bg-white text-black" side="bottom">
+                  <p>Coming Soon!</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             <Link
               href="/pricing"
-              className="block hover:underline transition-colors"
+              className={`block transition-colors ${pathname === "/pricing" ? "underline" : "hover:underline"}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Pricing
             </Link>
             <Link
-              href="/about"
-              className="block hover:underline transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
               href="/contact"
-              className="block hover:underline transition-colors"
+              className={`block transition-colors ${pathname === "/contact" ? "underline" : "hover:underline"}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              href="/about"
+              className={`block transition-colors ${pathname === "/about" ? "underline" : "hover:underline"}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
             </Link>
           </nav>
         )}

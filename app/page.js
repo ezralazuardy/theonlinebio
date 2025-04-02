@@ -15,8 +15,8 @@ export default function Home() {
       </div>
       <main className="absolute z-10 bottom-0 left-0 w-full flex flex-col">
         <div className="flex w-full justify-center">
-          <h1 className="[text-shadow:_0_4px_8px_#000000] text-[#FFFFFF] pb-10 text-6xl font-light leading-tight max-w-4xl">
-            In these Digital Era, your online presence matters the most.
+          <h1 className="pb-10 text-6xl font-light leading-tight max-w-4xl">
+            In these digital era, your online presence matters the most.
           </h1>
         </div>
         <div className="grid grid-cols-2 w-full min-h-52 border-t border-neutral-600/70">
@@ -27,10 +27,9 @@ export default function Home() {
           </div>
           <div className="flex flex-col w-full py-10 pl-16 pe-20 justify-center backdrop-filter backdrop-blur-md">
             <p className="text-sm text-justify mb-6">
-              We help Professionals and Entrepreneurs build their online
-              presence and reach their target audience by creating an unique and
-              customized professional online portfolio, bio, or profile website
-              that stands out. All of our works are carefully hand-crafted.
+              We craft unique and professional online portfolios, bios, and
+              profile websites that help Professionals and Entrepreneurs stand
+              out and connect with their audience.
             </p>
             <div className="flex space-x-4">
               <InquiryForm />

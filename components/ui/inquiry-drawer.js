@@ -9,7 +9,6 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,18 +18,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { toast } from "sonner";
 
-export default function InquiryForm() {
+export default function InquiryDrawer({ open, onClose }) {
   const pathname = usePathname();
-  const emailInputRef = useRef(null);
   const [isFormDrawerOpen, setFormDrawerOpen] = useState(false);
   const [isSubmittedDrawerOpen, setSubmittedDrawerOpen] = useState(false);
-  const [emailAddress, setEmailAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [turnstileToken, setTurnstileToken] = useState(null);
   const [submit, submitting] = useFormspark({
@@ -53,20 +50,6 @@ export default function InquiryForm() {
     },
   });
 
-  const handleButtonClick = (e) => {
-    e.preventDefault();
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (emailInputRef.current) {
-      const email = emailInputRef.current.value;
-      if (emailInputRef.current.validity.valid && emailRegex.test(email)) {
-        setFormDrawerOpen(true);
-      } else {
-        toast.error("Please enter a valid email address");
-        emailInputRef.current.reportValidity();
-      }
-    }
-  };
-
   const onSubmit = async (data) => {
     if (!turnstileToken) {
       toast.warning("Please verify you're human.");
@@ -85,15 +68,13 @@ export default function InquiryForm() {
     }
   };
 
-  const handleEmailChange = (e) => {
-    const value = e.target.value;
-    setEmailAddress(value);
-    setValue("email", value);
-  };
-
   const handlePhoneChange = (value) => {
     setPhoneNumber(value);
     setValue("phone", String(value));
+  };
+
+  const handleCloseFormDrawer = () => {
+    onClose();
   };
 
   return (
@@ -102,38 +83,19 @@ export default function InquiryForm() {
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
         strategy="afterInteractive"
       />
-      <form className="flex w-full max-w-sm items-center space-x-2">
+      <div className="flex w-full max-w-sm items-center space-x-2">
         <style jsx global>{`
           .country.highlight,
           .country:hover {
             background-color: #222222 !important;
           }
         `}</style>
-        <Input
-          type="email"
-          placeholder="Your email address"
-          title="Enter your email address"
-          className="focus:outline-none focus:ring-0 focus-visible:ring-0 text-white [&::selection]:bg-white [&::selection]:text-black"
-          ref={emailInputRef}
-          value={emailAddress}
-          onChange={handleEmailChange}
-          required
-        />
         <Drawer
           direction="right"
-          open={isFormDrawerOpen}
+          open={isFormDrawerOpen || open}
           onOpenChange={setFormDrawerOpen}
+          onClose={handleCloseFormDrawer}
         >
-          <DrawerTrigger asChild>
-            <Button
-              type="button"
-              variant="secondary"
-              className="cursor-pointer"
-              onClick={handleButtonClick}
-            >
-              Make Yours
-            </Button>
-          </DrawerTrigger>
           <DrawerContent className="bg-black border-none outline-none overflow-x-hidden overflow-y-auto">
             <div className="h-full w-full grow p-5 flex flex-col">
               <DrawerHeader>
@@ -360,7 +322,7 @@ export default function InquiryForm() {
         </Drawer>
         <Drawer
           direction="right"
-          open={isSubmittedDrawerOpen}
+          opem={isSubmittedDrawerOpen}
           onOpenChange={setSubmittedDrawerOpen}
         >
           <DrawerContent className="bg-black border-none outline-none overflow-x-hidden overflow-y-auto">
@@ -410,7 +372,7 @@ export default function InquiryForm() {
             </div>
           </DrawerContent>
         </Drawer>
-      </form>
+      </div>
     </>
   );
 }
