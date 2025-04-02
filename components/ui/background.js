@@ -28,7 +28,7 @@ export default function Background() {
         video.play().catch((error) => {
           console.error("Video playback failed:", error);
         });
-      }, 600);
+      }, 500);
 
       return () => {
         video.removeEventListener("loadeddata", handleLoaded);
