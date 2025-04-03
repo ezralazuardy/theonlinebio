@@ -103,9 +103,8 @@ export default function InquiryDrawer({ open, onClose }) {
                   Submit Inquiry
                 </DrawerTitle>
                 <DrawerDescription className="mt-2 ps-1 pe-2">
-                  You&apos;re a few step away from making your own profile
-                  website. Please tell us more about who you are and what you
-                  need.
+                  You&apos;re a few step away from making your own profile website. Please tell us
+                  more about who you are and what you need.
                 </DrawerDescription>
               </DrawerHeader>
               <form
@@ -123,15 +122,12 @@ export default function InquiryDrawer({ open, onClose }) {
                         required: "First name is required",
                         maxLength: {
                           value: 100,
-                          message:
-                            "First name must be less than 100 characters",
+                          message: "First name must be less than 100 characters",
                         },
                       })}
                     />
                     {errors.first_name && (
-                      <p className="text-red-500 text-xs mt-2">
-                        {errors.first_name.message}
-                      </p>
+                      <p className="text-red-500 text-xs mt-2">{errors.first_name.message}</p>
                     )}
                   </div>
                   <div className="flex flex-col w-full">
@@ -149,9 +145,7 @@ export default function InquiryDrawer({ open, onClose }) {
                       })}
                     />
                     {errors.last_name && (
-                      <p className="text-red-500 text-xs mt-2">
-                        {errors.last_name.message}
-                      </p>
+                      <p className="text-red-500 text-xs mt-2">{errors.last_name.message}</p>
                     )}
                   </div>
                 </div>
@@ -170,9 +164,7 @@ export default function InquiryDrawer({ open, onClose }) {
                     })}
                   />
                   {errors.profession && (
-                    <p className="text-red-500 text-xs mt-2">
-                      {errors.profession.message}
-                    </p>
+                    <p className="text-red-500 text-xs mt-2">{errors.profession.message}</p>
                   )}
                 </div>
                 <div className="flex flex-col w-full ps-1 pe-2">
@@ -187,15 +179,12 @@ export default function InquiryDrawer({ open, onClose }) {
                       required: "Email address is required",
                       maxLength: {
                         value: 100,
-                        message:
-                          "Email address must be less than 100 characters",
+                        message: "Email address must be less than 100 characters",
                       },
                     })}
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-xs mt-2">
-                      {errors.email.message}
-                    </p>
+                    <p className="text-red-500 text-xs mt-2">{errors.email.message}</p>
                   )}
                 </div>
                 <div className="flex flex-col w-full ps-1 pe-2">
@@ -249,15 +238,12 @@ export default function InquiryDrawer({ open, onClose }) {
                     {...register("notes", {
                       maxLength: {
                         value: 5000,
-                        message:
-                          "Additional notes must be less than 5000 characters",
+                        message: "Additional notes must be less than 5000 characters",
                       },
                     })}
                   />
                   {errors.notes && (
-                    <p className="text-red-500 text-xs mt-2">
-                      {errors.notes.message}
-                    </p>
+                    <p className="text-red-500 text-xs mt-2">{errors.notes.message}</p>
                   )}
                 </div>
                 <div className="flex flex-col w-full ps-1">
@@ -303,11 +289,7 @@ export default function InquiryDrawer({ open, onClose }) {
                     "Send Inquiry"
                   )}
                 </Button>
-                <Button
-                  variant="secondary"
-                  className="cursor-pointer ms-1 me-2"
-                  asChild
-                >
+                <Button variant="secondary" className="cursor-pointer ms-1 me-2" asChild>
                   <Link
                     href={process.env.NEXT_PUBLIC_APPOINTMENT_LINK}
                     target="_blank"
@@ -342,9 +324,8 @@ export default function InquiryDrawer({ open, onClose }) {
                     We&apos;ve Received Your Inquiry!
                   </DrawerTitle>
                   <DrawerDescription className="mt-2">
-                    Your profile website is now planned to be created. Sit down
-                    and relax, we&apos;ll get back to you shortly in the next 24
-                    hours.
+                    Your profile website is now planned to be created. Sit down and relax,
+                    we&apos;ll get back to you shortly in the next 24 hours.
                   </DrawerDescription>
                 </DrawerHeader>
                 <DrawerFooter className="px-10">
@@ -353,11 +334,7 @@ export default function InquiryDrawer({ open, onClose }) {
                       Okay, I&apos;ll Wait
                     </Button>
                   </DrawerClose>
-                  <Button
-                    variant="secondary"
-                    className="cursor-pointer"
-                    asChild
-                  >
+                  <Button variant="secondary" className="cursor-pointer" asChild>
                     <Link
                       href={process.env.NEXT_PUBLIC_APPOINTMENT_LINK}
                       target="_blank"

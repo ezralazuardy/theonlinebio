@@ -45,8 +45,8 @@ export default function ContactedDrawer({ open, onClose }) {
                 We&apos;ve Received Your Message!
               </DrawerTitle>
               <DrawerDescription className="mt-2 text-justify">
-                Thank you for reaching out to us. We appreciate your interest in
-                our services and will be in touch with you shortly.
+                Thank you for reaching out to us. We appreciate your interest in our services and
+                will be in touch with you shortly.
               </DrawerDescription>
             </DrawerHeader>
             <DrawerFooter className="px-10 mb-5">

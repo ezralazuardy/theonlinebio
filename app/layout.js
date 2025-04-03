@@ -67,9 +67,7 @@ export default function RootLayout({ children }) {
       <Head>
         <meta name="apple-mobile-web-app-title" content="The Online Bio™" />
       </Head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
         <ComponentProvider />
         <VercelProvider />

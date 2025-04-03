@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
-export default function Background() {
+export default function Background({ type = "cover-1" }) {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef(null);
@@ -13,22 +13,24 @@ export default function Background() {
       const video = videoRef.current;
 
       const handleLoaded = () => {
-        setIsVideoLoaded(true);
+        // setIsVideoLoaded(true);
+        setTimeout(() => {
+          setIsVideoLoaded(true);
+        }, 1100);
+        setTimeout(() => {
+          video.play().catch((error) => {
+            console.error("Video playback failed:", error);
+          });
+        }, 1200);
       };
 
-      setTimeout(() => {
-        video.addEventListener("loadeddata", handleLoaded);
-        video.addEventListener("loadedmetadata", handleLoaded);
-        video.addEventListener("canplay", handleLoaded);
+      video.addEventListener("loadeddata", handleLoaded);
+      video.addEventListener("loadedmetadata", handleLoaded);
+      video.addEventListener("canplay", handleLoaded);
 
-        if (video.readyState >= 3) {
-          handleLoaded();
-        }
-
-        video.play().catch((error) => {
-          console.error("Video playback failed:", error);
-        });
-      }, 500);
+      if (video.readyState >= 3) {
+        handleLoaded();
+      }
 
       return () => {
         video.removeEventListener("loadeddata", handleLoaded);
@@ -40,31 +42,32 @@ export default function Background() {
 
   return (
     <div className="relative w-full h-full">
-      {!isVideoLoaded && (
-        <Image
-          onLoad={() => setIsImageLoaded(true)}
-          src="/images/cover-thumbnail-1.png"
-          alt="Cover Thumbnail"
-          preload="true"
-          quality={100}
-          className={`object-cover opacity-0 transition-opacity duration-500 ${
-            isImageLoaded ? "opacity-40" : "opacity-0"
-          }`}
-          fill
-        />
-      )}
-      <video
-        ref={videoRef}
-        className={`absolute top-0 left-0 opacity-40 w-full h-full object-cover ${
-          isVideoLoaded ? "block" : "hidden"
+      <Image
+        onLoad={() => setIsImageLoaded(true)}
+        alt="Cover Thumbnail"
+        src={`/videos/${type}-thumbnail.png`}
+        className={`flex w-full h-full object-cover transition-opacity duration-1000 ${
+          isImageLoaded ? "opacity-100" : "opacity-0"
         }`}
-        src="/videos/cover-1.mp4"
         preload="true"
-        loop
-        muted
-        playsInline
-        autoPlay
+        priority="true"
+        fill
       />
+      <div
+        className={`absolute top-0 left-0 w-full h-full ${isVideoLoaded ? "visible" : "invisible"}`}
+      >
+        <video
+          ref={videoRef}
+          src={`/videos/${type}.mp4`}
+          className="w-full h-full object-cover"
+          preload="true"
+          priority="true"
+          loop
+          muted
+          playsInline
+        />
+      </div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
     </div>
   );
 }
