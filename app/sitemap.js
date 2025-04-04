@@ -13,22 +13,16 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
-      url: "https://www.theonline.bio/about",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: "https://www.theonline.bio/contact",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://www.theonline.bio/faq",
+      url: "https://www.theonline.bio/about",
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.8,
     },
   ];
 }
