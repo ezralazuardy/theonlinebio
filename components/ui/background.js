@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
-export default function Background({ type = "cover-1" }) {
+export default function Background({ type = "cover-01" }) {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef(null);

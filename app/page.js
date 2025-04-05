@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-black text-white">
       <div className="absolute inset-0 z-0">
-        <Background type="cover-1" />
+        <Background type="cover-01" />
       </div>
       <div className="absolute z-10">
         <Header />
@@ -28,8 +28,9 @@ export default function Home() {
             <ShowcaseLabel className="invisible" />
             <div className="min-h-48 flex flex-col w-full py-10 pl-16 pe-20 justify-center backdrop-filter backdrop-blur-md border-t border-neutral-600/70">
               <p className="text-sm text-justify mb-6">
-                We craft unique and professional online portfolios, bios, and profile websites that
-                help Professionals and Entrepreneurs stand out and connect with their audience.
+                We craft unique and professional online portfolios, bios, and
+                profile websites that help Professionals and Entrepreneurs stand
+                out and connect with their audience.
               </p>
               <div className="flex space-x-4">
                 <InquiryForm />
