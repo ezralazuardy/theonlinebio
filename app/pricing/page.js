@@ -4,7 +4,7 @@ import Background from "@/components/ui/background";
 import Header from "@/components/ui/header";
 import InquiryDrawer from "@/components/ui/inquiry-drawer";
 import { ArrowRight, AtSign, Check, Globe } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Pricing() {
   const [openInquiryDrawer, setOpenInquiryDrawer] = useState(false);
@@ -12,7 +12,6 @@ export default function Pricing() {
   const [hasScrollbar, setHasScrollbar] = useState(false);
   const [isSafari, setIsSafari] = useState(false);
   const containerRef = useRef(null);
-  const contentContainerRef = useRef(null);
 
   useEffect(() => {
     // Detect Safari browser
@@ -54,16 +53,6 @@ export default function Pricing() {
     };
   }, []);
 
-  // Apply Safari-specific styling on mobile only
-  useEffect(() => {
-    if (isSafari && contentContainerRef.current) {
-      const isMobile = window.innerWidth < 1024; // 1024px is the lg breakpoint in Tailwind
-      if (isMobile) {
-        contentContainerRef.current.style.paddingBottom = "9vh";
-      }
-    }
-  }, [isSafari]);
-
   const handleOpenInquiryDrawer = () => {
     setOpenInquiryDrawer(true);
   };
@@ -74,26 +63,23 @@ export default function Pricing() {
 
   return (
     <div className="relative min-h-screen bg-black text-white">
-      <div className="absolute inset-0 z-0">
+      <div className="fixed inset-0 z-10">
         <Background type="cover-02" />
       </div>
-      <div className="absolute z-10">
+      <div className="fixed z-30">
         <Header isScrolled={isScrolled} hasScrollbar={hasScrollbar} />
       </div>
       <main
         ref={containerRef}
-        className="absolute z-0 bottom-0 left-0 w-full h-full overflow-y overflow-x-hidden flex flex-col"
+        className="absolute z-20 bottom-0 left-0 w-full h-full overflow-y overflow-x-hidden flex flex-col"
       >
         <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full">
           <div className="flex flex-col w-full border-r border-neutral-600/70 justify-end items-start px-8 lg:px-20">
             <h1 className="mt-[25.5vh] mb-8 lg:mb-10 text-4xl lg:text-6xl font-light leading-tight">
-              Those who seeks value, price comes in second.
+              Those who seek value, price comes second.
             </h1>
           </div>
-          <div
-            ref={contentContainerRef}
-            className="flex flex-col w-full lg:col-span-2 pt-10 lg:py-0 pl-8 lg:pl-16 pe-8 lg:pe-20 justify-end backdrop-filter backdrop-blur-md border-t border-neutral-600/70 lg:border-none"
-          >
+          <div className="flex flex-col w-full lg:col-span-2 pt-10 lg:pt-0 ps-8 lg:ps-16 pe-8 lg:pe-20 justify-end backdrop-filter backdrop-blur-md border-t lg:border-none border-neutral-600/70">
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 w-full justify-center lg:justify-start">
               <div
                 onClick={handleOpenInquiryDrawer}
@@ -232,7 +218,9 @@ export default function Pricing() {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 mt-8 mb-8 lg:mb-12 w-full justify-start">
+            <div
+              className={`grid grid-cols-1 mt-8 mb-8 lg:mb-12 w-full justify-start ${isSafari ? "mb-28 lg:mb-12" : "mb-12"}`}
+            >
               <p className="text-xs lg:text-sm font-regular text-neutral-300 text-justify lg:text-left">
                 All prices are exclusive of 10% taxes. With a minimum subscription period of 4
                 months. <br className="hidden lg:flex" />

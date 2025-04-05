@@ -95,16 +95,17 @@ export default function Background({ type = "cover-01" }) {
   }, []);
 
   return (
-    <div className="relative z-10 w-full h-full">
+    <div className="relative z-10 w-full h-full bg-black">
       <Image
         onLoad={() => setIsImageLoaded(true)}
         alt="Cover Thumbnail"
-        src={`/videos/${type}-thumbnail.png`}
+        src={`/videos/${type}-thumbnail.jpg`}
         className={`flex w-full h-full object-cover transition-opacity duration-1000 ${
           isImageLoaded ? "opacity-100" : "opacity-0"
         }`}
         preload="auto"
         priority="true"
+        quality={100}
         fill
       />
       <div

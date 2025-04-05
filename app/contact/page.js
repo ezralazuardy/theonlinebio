@@ -59,10 +59,11 @@ export default function Contact() {
   const [turnstileToken, setTurnstileToken] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [hasScrollbar, setHasScrollbar] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
+  const containerRef = useRef(null);
   const [submit, submitting] = useFormspark({
     formId: process.env.NEXT_PUBLIC_FORMSPARK_CONTACT_FORM_ID,
   });
-  const containerRef = useRef(null);
   const {
     register,
     handleSubmit,
@@ -77,6 +78,10 @@ export default function Contact() {
   });
 
   useEffect(() => {
+    // Detect Safari browser
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafariBrowser);
+
     const container = containerRef.current;
 
     const handleScroll = () => {
@@ -139,23 +144,23 @@ export default function Contact() {
   return (
     <>
       <div className="relative min-h-screen bg-black text-white">
-        <div className="absolute inset-0 z-0">
+        <div className="fixed inset-0 z-10">
           <Background type="cover-03" />
         </div>
-        <div className="absolute z-10">
+        <div className="fixed z-30">
           <Header isScrolled={isScrolled} hasScrollbar={hasScrollbar} />
         </div>
         <main
           ref={containerRef}
-          className="absolute z-0 bottom-0 left-0 w-full h-full overflow-y overflow-x-hidden flex flex-col"
+          className="absolute z-20 bottom-0 left-0 w-full h-full overflow-y overflow-x-hidden flex flex-col"
         >
           <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full">
-            <div className="flex flex-col w-full border-r border-neutral-600/70 justify-end items-start px-10 lg:px-20">
+            <div className="flex flex-col w-full border-r border-neutral-600/70 justify-end items-start px-8 lg:px-20">
               <h1 className="mt-[25.5vh] mb-8 lg:mb-10 text-4xl lg:text-6xl font-light leading-tight">
                 We would love to hear from you!
               </h1>
             </div>
-            <div className="flex flex-col w-full lg:col-span-2 pl-16 pe-20 justify-end backdrop-filter backdrop-blur-md">
+            <div className="flex flex-col w-full lg:col-span-2 pt-10 lg:pt-0 ps-8 lg:ps-16 pe-8 lg:pe-20 justify-end backdrop-filter backdrop-blur-md border-t lg:border-none border-neutral-600/70">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full justify-start backdrop-filter backdrop-blur-md">
                 <div className="flex flex-col w-full h-auto">
                   <div className="flex flex-col w-full h-auto grow border border-neutral-600/70 rounded-md bg-white/10 px-6 py-4">
@@ -302,7 +307,9 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 mt-8 mb-12 w-full justify-start">
+              <div
+                className={`grid grid-cols-1 mt-8 mb-12 w-full justify-start ${isSafari ? "mb-28 lg:mb-12" : "mb-12"}`}
+              >
                 <p className="text-sm font-regular text-neutral-300">
                   By submitting to our contact form, you agree to our{" "}
                   <Link
