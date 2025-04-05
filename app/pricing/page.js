@@ -33,7 +33,7 @@ export default function Pricing() {
             </h1>
           </div>
           <div className="flex flex-col w-full col-span-2 pl-16 pe-20 justify-end backdrop-filter backdrop-blur-md">
-            <div className="grid grid-cols-2 gap-8 w-full justify-start backdrop-filter backdrop-blur-md">
+            <div className="grid grid-cols-2 gap-8 w-full justify-start">
               <div
                 onClick={handleOpenInquiryDrawer}
                 className="transition-all duration-500 hover:scale-105 cursor-pointer flex flex-col w-full h-auto"
@@ -61,21 +61,15 @@ export default function Pricing() {
                   </p>
                   <p className="flex space-x-2 text-sm font-regular mb-2">
                     <Check className="size-4 mt-0.5" />
+                    <span>Mobile responsive design</span>
+                  </p>
+                  <p className="flex space-x-2 text-sm font-regular mb-2">
+                    <Check className="size-4 mt-0.5" />
                     <span>Basic search engine optimization</span>
                   </p>
                   <p className="flex space-x-2 text-sm font-regular mb-2">
                     <Check className="size-4 mt-0.5" />
-                    <span>
-                      Deploy to <code>you.theonline.bio</code> domain
-                    </span>
-                  </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
-                    <span>90+ Google Pagespeed scores guaranteed</span>
-                  </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
-                    <span>Mobile responsive</span>
+                    <span>Deploy to you.theonline.bio domain</span>
                   </p>
                   <p className="flex space-x-2 text-sm font-regular mb-2">
                     <Check className="size-4 mt-0.5" />
@@ -83,7 +77,7 @@ export default function Pricing() {
                   </p>
                   <p className="flex space-x-2 text-sm font-regular">
                     <Check className="size-4 mt-0.5" />
-                    <span>Literally ∞ web pages &amp; revisions</span>
+                    <span>Literally ∞ web pages and revisions</span>
                   </p>
                 </div>
               </div>
@@ -102,7 +96,9 @@ export default function Pricing() {
                       <h2 className="text-xl font-medium">Pro</h2>
                     </div>
                     <div className="flex justify-end">
-                      <h2 className="text-md font-medium line-through mr-2">$75 / mo</h2>
+                      <h2 className="text-md font-medium line-through mr-2">
+                        $75 / mo
+                      </h2>
                       <ArrowRight className="size-4 mr-2 mt-1" />
                       <h2 className="text-md font-medium">$50 / mo</h2>
                     </div>
@@ -125,10 +121,6 @@ export default function Pricing() {
                   <p className="flex space-x-2 text-sm font-regular mb-2">
                     <Check className="size-4 mt-0.5" />
                     <span>Advanced support availability (24/7)</span>
-                  </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
-                    <span>Advanced branding options</span>
                   </p>
                   <p className="flex space-x-2 text-sm font-regular mb-2">
                     <Check className="size-4 mt-0.5" />
@@ -165,7 +157,9 @@ export default function Pricing() {
                     </p>
                     <p className="flex space-x-2 text-sm font-regular">
                       <AtSign className="size-4 mt-0.5" />
-                      <span>Custom business email address (e.g. you@yourdomain.com)</span>
+                      <span>
+                        Custom business email address (e.g. you@yourdomain.com)
+                      </span>
                     </p>
                   </div>
                   <div className="flex flex-col w-full font-medium">
@@ -181,16 +175,20 @@ export default function Pricing() {
             </div>
             <div className="grid grid-cols-1 mt-8 mb-12 w-full justify-start">
               <p className="text-sm font-regular text-neutral-300">
-                All prices are exclusive of 10% taxes. With a minimum subscription period of 4
-                months.
+                All prices are exclusive of 10% taxes. With a minimum
+                subscription period of 4 months.
                 <br />
-                Development phase took at least 7 work days, depends on your requirements.
+                Development phase took at least 7 work days, depends on your
+                requirements.
               </p>
             </div>
           </div>
         </div>
       </main>
-      <InquiryDrawer open={openInquiryDrawer} onClose={handleCloseInquiryDrawer} />
+      <InquiryDrawer
+        open={openInquiryDrawer}
+        onClose={handleCloseInquiryDrawer}
+      />
     </div>
   );
 }
