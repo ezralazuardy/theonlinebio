@@ -38,9 +38,9 @@ export default function Pricing() {
                 onClick={handleOpenInquiryDrawer}
                 className="transition-all duration-500 hover:scale-105 cursor-pointer flex flex-col w-full h-auto"
               >
-                <div className="grid grid-cols-2 w-full invisible">
-                  <div className="flex flex-col w-auto h-auto rounded-t-md bg-white px-6 py-2 text-xs text-black font-bold text-start leading-none uppercase">
-                    Limited-Time Offer!
+                <div className="flex w-full invisible">
+                  <div className="flex w-auto h-auto rounded-t-md bg-white px-6 py-2 text-xs text-black font-bold text-start leading-none uppercase">
+                    Limited-Time Offer
                   </div>
                 </div>
                 <div className="transition-all duration-500 hover:bg-white/20 flex flex-col w-full h-auto border border-neutral-600/70 rounded-t-md rounded-b-md bg-white/10 px-6 py-4">
@@ -91,9 +91,9 @@ export default function Pricing() {
                 onClick={handleOpenInquiryDrawer}
                 className="transition-all duration-500 hover:scale-105 cursor-pointer flex flex-col w-full h-auto"
               >
-                <div className="grid grid-cols-2 w-full">
+                <div className="flex w-full">
                   <div className="flex flex-col w-auto h-auto rounded-t-md bg-white px-6 py-2 text-xs text-black font-bold text-start leading-none uppercase">
-                    Limited-Time Offer!
+                    Limited-Time Offer
                   </div>
                 </div>
                 <div className="transition-all duration-500 hover:bg-white/20 flex flex-col w-full h-auto border border-white rounded-tr-md rounded-b-md bg-white/10 px-6 py-4">
@@ -102,9 +102,7 @@ export default function Pricing() {
                       <h2 className="text-xl font-medium">Pro</h2>
                     </div>
                     <div className="flex justify-end">
-                      <h2 className="text-md font-medium line-through mr-2">
-                        $75 / mo
-                      </h2>
+                      <h2 className="text-md font-medium line-through mr-2">$75 / mo</h2>
                       <ArrowRight className="size-4 mr-2 mt-1" />
                       <h2 className="text-md font-medium">$50 / mo</h2>
                     </div>
@@ -167,9 +165,7 @@ export default function Pricing() {
                     </p>
                     <p className="flex space-x-2 text-sm font-regular">
                       <AtSign className="size-4 mt-0.5" />
-                      <span>
-                        Custom business email address (e.g. you@yourdomain.com)
-                      </span>
+                      <span>Custom business email address (e.g. you@yourdomain.com)</span>
                     </p>
                   </div>
                   <div className="flex flex-col w-full font-medium">
@@ -185,20 +181,16 @@ export default function Pricing() {
             </div>
             <div className="grid grid-cols-1 mt-8 mb-12 w-full justify-start">
               <p className="text-sm font-regular text-neutral-300">
-                All prices are exclusive of 10% taxes. With a minimum
-                subscription period of 4 months.
+                All prices are exclusive of 10% taxes. With a minimum subscription period of 4
+                months.
                 <br />
-                Development phase took at least 7 work days, depends on your
-                requirements.
+                Development phase took at least 7 work days, depends on your requirements.
               </p>
             </div>
           </div>
         </div>
       </main>
-      <InquiryDrawer
-        open={openInquiryDrawer}
-        onClose={handleCloseInquiryDrawer}
-      />
+      <InquiryDrawer open={openInquiryDrawer} onClose={handleCloseInquiryDrawer} />
     </div>
   );
 }
