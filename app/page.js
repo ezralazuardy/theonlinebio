@@ -7,8 +7,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "The Online Bio™",
-  description:
-    "We craft unique and professional online portfolios, bios, and profile websites.",
+  description: "We craft unique and professional online portfolios, bios, and profile websites.",
 };
 
 export default function Home() {
@@ -34,9 +33,8 @@ export default function Home() {
             <ShowcaseLabel className="invisible" />
             <div className="lg:min-h-48 flex flex-col w-full py-8 lg:py-10 ps-8 lg:ps-16 pe-8 lg:pe-20 justify-center backdrop-filter backdrop-blur-md border-t border-neutral-600/70">
               <p className="text-sm text-justify mb-6">
-                We craft unique and professional online portfolios, bios, and
-                profile websites that help Professionals and Entrepreneurs stand
-                out and connect with their audience.
+                We craft unique and professional online portfolios, bios, and profile websites that
+                help Professionals and Entrepreneurs stand out and connect with their audience.
               </p>
               <div className="flex w-full lg:space-x-4">
                 <div className="flex w-full">
