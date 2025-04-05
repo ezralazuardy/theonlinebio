@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+export const metadata = {
+  title: "The Online Bio™ | About",
+  description: "F*ck AI and your cheap website templates.",
+};
+
 const year = new Date().getFullYear();
 
 export default function About() {
@@ -14,7 +19,9 @@ export default function About() {
 
   useEffect(() => {
     if (!isBrowserChecked) {
-      const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(
+        navigator.userAgent,
+      );
       setIsSafari(isSafariBrowser);
       setBrowserChecked(true);
     }
@@ -31,7 +38,9 @@ export default function About() {
             <div className="flex flex-col w-full">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
-                animate={imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                animate={
+                  imageLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                }
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="overflow-hidden"
               >
@@ -53,22 +62,26 @@ export default function About() {
               F*ck AI and Your Cheap Website Templates.
             </h1>
             <p className="flex w-full text-md text-justify text-neutral-300 mb-6">
-              In a world flooded with generic AI-generated sites and cookie-cutter templates,
-              standing out has never been harder. Your online presence should reflect who you are,
-              and not some mass-produced design with zero personality.
+              In a world flooded with generic AI-generated sites and
+              cookie-cutter templates, standing out has never been harder. Your
+              online presence should reflect who you are, and not some
+              mass-produced design with zero personality.
             </p>
             <p className="flex w-full text-md text-justify text-neutral-300 mb-6">
-              That&apos;s why The Online Bio™ exists. We craft unique, hand-built professional bios,
-              portfolios, and profile websites that make you look like a leader, not just another
-              name on the internet.
+              That&apos;s why The Online Bio™ exists. We craft unique,
+              hand-built professional bios, portfolios, and profile websites
+              that make you look like a leader, not just another name on the
+              internet.
             </p>
             <p className="flex w-full text-md text-justify text-neutral-300 mb-8">
-              Because your personal brand deserves more than just a quick, cheap website.
+              Because your personal brand deserves more than just a quick, cheap
+              website.
             </p>
             <p className="flex w-full text-xs text-justify text-neutral-300">
-              The Online Bio™ is a service product from Lazuardy. <br className="hidden lg:flex" />
-              Copyright © {year} PT Inovasi Kolektif Digital (The Online Bio™, LEXA, Lazuardy, We,
-              Our, Us). <br className="hidden lg:flex" />
+              The Online Bio™ is a service product from Lazuardy.{" "}
+              <br className="hidden lg:flex" />
+              Copyright © {year} PT Inovasi Kolektif Digital (The Online Bio™,
+              LEXA, Lazuardy, We, Our, Us). <br className="hidden lg:flex" />
               All rights reserved. www.lazuardy.tech. contact@lazuardy.tech.
             </p>
           </div>

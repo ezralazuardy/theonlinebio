@@ -6,6 +6,11 @@ import InquiryDrawer from "@/components/ui/inquiry-drawer";
 import { ArrowRight, AtSign, Check, Globe } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+export const metadata = {
+  title: "The Online Bio™ | Pricing",
+  description: "Those who seek value, price comes second.",
+};
+
 export default function Pricing() {
   const [openInquiryDrawer, setOpenInquiryDrawer] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,7 +20,9 @@ export default function Pricing() {
 
   useEffect(() => {
     // Detect Safari browser
-    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(
+      navigator.userAgent,
+    );
     setIsSafari(isSafariBrowser);
 
     const container = containerRef.current;
@@ -143,7 +150,9 @@ export default function Pricing() {
                       <h2 className="text-xl font-medium">Pro</h2>
                     </div>
                     <div className="flex justify-end col-span-2">
-                      <h2 className="text-md font-medium line-through mr-2">$75 / mo</h2>
+                      <h2 className="text-md font-medium line-through mr-2">
+                        $75 / mo
+                      </h2>
                       <ArrowRight className="size-4 mr-2 mt-1" />
                       <h2 className="text-md font-medium">$50 / mo</h2>
                     </div>
@@ -199,12 +208,16 @@ export default function Pricing() {
                     <p className="flex space-x-2 text-sm font-regular mb-2">
                       <Globe className="size-4 mt-0.5" />
                       <span>Custom domain</span>
-                      <span className="hidden lg:flex">(e.g. yourdomain.com)</span>
+                      <span className="hidden lg:flex">
+                        (e.g. yourdomain.com)
+                      </span>
                     </p>
                     <p className="flex space-x-2 text-sm font-regular">
                       <AtSign className="size-4 mt-0.5" />
                       <span>Custom email address</span>
-                      <span className="hidden lg:flex">(e.g. you@yourdomain.com)</span>
+                      <span className="hidden lg:flex">
+                        (e.g. you@yourdomain.com)
+                      </span>
                     </p>
                   </div>
                   <div className="flex flex-col w-full font-medium">
@@ -222,15 +235,20 @@ export default function Pricing() {
               className={`grid grid-cols-1 mt-8 mb-8 lg:mb-12 w-full justify-start ${isSafari ? "mb-28 lg:mb-12" : "mb-12"}`}
             >
               <p className="text-xs lg:text-sm font-regular text-neutral-300 text-justify lg:text-left">
-                All prices are exclusive of 10% taxes. With a minimum subscription period of 4
-                months. <br className="hidden lg:flex" />
-                Development phase took at least 7 work days, depends on your requirements.
+                All prices are exclusive of 10% taxes. With a minimum
+                subscription period of 4 months.{" "}
+                <br className="hidden lg:flex" />
+                Development phase took at least 7 work days, depends on your
+                requirements.
               </p>
             </div>
           </div>
         </div>
       </main>
-      <InquiryDrawer open={openInquiryDrawer} onClose={handleCloseInquiryDrawer} />
+      <InquiryDrawer
+        open={openInquiryDrawer}
+        onClose={handleCloseInquiryDrawer}
+      />
     </div>
   );
 }

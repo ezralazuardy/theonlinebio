@@ -20,6 +20,11 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
+export const metadata = {
+  title: "The Online Bio™ | Contact",
+  description: "We would love to hear from you!",
+};
+
 const faqs = [
   {
     id: "item-1",
@@ -79,7 +84,9 @@ export default function Contact() {
 
   useEffect(() => {
     // Detect Safari browser
-    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(
+      navigator.userAgent,
+    );
     setIsSafari(isSafariBrowser);
 
     const container = containerRef.current;
@@ -178,12 +185,15 @@ export default function Contact() {
                             required: "Full name is required",
                             maxLength: {
                               value: 100,
-                              message: "Full name must be less than 100 characters",
+                              message:
+                                "Full name must be less than 100 characters",
                             },
                           })}
                         />
                         {errors.name && (
-                          <p className="text-red-500 text-xs mt-2">{errors.name.message}</p>
+                          <p className="text-red-500 text-xs mt-2">
+                            {errors.name.message}
+                          </p>
                         )}
                       </div>
                       <div className="flex flex-col w-full">
@@ -198,7 +208,8 @@ export default function Contact() {
                             required: "Email address is required",
                             maxLength: {
                               value: 100,
-                              message: "Email address must be less than 100 characters",
+                              message:
+                                "Email address must be less than 100 characters",
                             },
                             pattern: {
                               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -207,7 +218,9 @@ export default function Contact() {
                           })}
                         />
                         {errors.email && (
-                          <p className="text-red-500 text-xs mt-2">{errors.email.message}</p>
+                          <p className="text-red-500 text-xs mt-2">
+                            {errors.email.message}
+                          </p>
                         )}
                       </div>
                       <div className="flex flex-col w-full">
@@ -220,12 +233,15 @@ export default function Contact() {
                             required: "Message is required",
                             maxLength: {
                               value: 5000,
-                              message: "Additional notes must be less than 5000 characters",
+                              message:
+                                "Additional notes must be less than 5000 characters",
                             },
                           })}
                         />
                         {errors.message && (
-                          <p className="text-red-500 text-xs mt-2">{errors.message.message}</p>
+                          <p className="text-red-500 text-xs mt-2">
+                            {errors.message.message}
+                          </p>
                         )}
                       </div>
                       <div className="flex flex-col w-full">
@@ -289,10 +305,17 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-col w-full h-auto border border-neutral-600/70 rounded-md bg-white/10 px-6 pt-4 pb-1">
                   <div className="flex flex-col w-full justify-start mb-2">
-                    <h2 className="text-xl font-medium">Frequently Asked Questions</h2>
+                    <h2 className="text-xl font-medium">
+                      Frequently Asked Questions
+                    </h2>
                   </div>
                   <div className="flex flex-col w-full">
-                    <Accordion type="single" className="w-full" collapsible defaultValue="item-1">
+                    <Accordion
+                      type="single"
+                      className="w-full"
+                      collapsible
+                      defaultValue="item-1"
+                    >
                       {faqs.map((faq) => (
                         <AccordionItem key={faq.id} value={faq.id}>
                           <AccordionTrigger className="cursor-pointer">
@@ -332,7 +355,10 @@ export default function Contact() {
                   .
                   <br />
                   In addition, you may contact us at{" "}
-                  <Link href="mailto:hello@theonline.bio" className="text-white hover:underline">
+                  <Link
+                    href="mailto:hello@theonline.bio"
+                    className="text-white hover:underline"
+                  >
                     hello@theonline.bio
                   </Link>
                   .
@@ -342,7 +368,10 @@ export default function Contact() {
           </div>
         </main>
       </div>
-      <ContactedDrawer open={isContactedDrawerOpen} onClose={handleCloseContactedDrawer} />
+      <ContactedDrawer
+        open={isContactedDrawerOpen}
+        onClose={handleCloseContactedDrawer}
+      />
     </>
   );
 }
