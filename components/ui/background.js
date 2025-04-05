@@ -11,21 +11,75 @@ export default function Background({ type = "cover-01" }) {
   useEffect(() => {
     if (videoRef.current) {
       const video = videoRef.current;
+      let hasLoaded = false;
+      let playAttempts = 0;
+      const maxPlayAttempts = 5;
 
       const handleLoaded = () => {
+        if (hasLoaded) return; // Prevent multiple executions
+        hasLoaded = true;
+
         setTimeout(() => {
           setIsVideoLoaded(true);
         }, 1100);
-        setTimeout(() => {
-          video.play().catch((error) => {
-            console.error("Video playback failed:", error);
-          });
-        }, 1200);
+
+        // Function to attempt playing with exponential backoff
+        const attemptToPlay = () => {
+          if (playAttempts >= maxPlayAttempts) {
+            console.error("Max play attempts reached for Safari");
+            return;
+          }
+
+          playAttempts++;
+
+          // For Safari, try to load the video first
+          video.load();
+
+          console.log(`Attempt ${playAttempts} to play video`);
+          const playPromise = video.play();
+
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.error(`Video playback failed (attempt ${playAttempts}):`, error);
+
+              // Retry with exponential backoff
+              const backoffTime = 1000 * Math.pow(2, playAttempts - 1);
+              console.log(`Retrying in ${backoffTime}ms`);
+
+              setTimeout(attemptToPlay, backoffTime);
+
+              // Also try with user interaction for Safari
+              document.addEventListener(
+                "click",
+                function playVideoOnce() {
+                  video.play().catch((e) => console.error("Play on click failed:", e));
+                  document.removeEventListener("click", playVideoOnce);
+                },
+                { once: true }
+              );
+            });
+          }
+        };
+
+        // Start first attempt after delay
+        setTimeout(attemptToPlay, 2000); // Increased timeout for Safari
       };
 
+      // Add more events for Safari compatibility
       video.addEventListener("loadeddata", handleLoaded);
       video.addEventListener("loadedmetadata", handleLoaded);
       video.addEventListener("canplay", handleLoaded);
+      video.addEventListener("canplaythrough", handleLoaded);
+
+      // Force preload for Safari
+      video.preload = "auto";
+
+      // Try to manually trigger load in Safari
+      try {
+        video.load();
+      } catch (e) {
+        console.error("Video load failed:", e);
+      }
 
       if (video.readyState >= 3) {
         handleLoaded();
@@ -35,12 +89,13 @@ export default function Background({ type = "cover-01" }) {
         video.removeEventListener("loadeddata", handleLoaded);
         video.removeEventListener("loadedmetadata", handleLoaded);
         video.removeEventListener("canplay", handleLoaded);
+        video.removeEventListener("canplaythrough", handleLoaded);
       };
     }
   }, []);
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative z-10 w-full h-full">
       <Image
         onLoad={() => setIsImageLoaded(true)}
         alt="Cover Thumbnail"
@@ -48,7 +103,7 @@ export default function Background({ type = "cover-01" }) {
         className={`flex w-full h-full object-cover transition-opacity duration-1000 ${
           isImageLoaded ? "opacity-100" : "opacity-0"
         }`}
-        preload="true"
+        preload="auto"
         priority="true"
         fill
       />
@@ -60,7 +115,7 @@ export default function Background({ type = "cover-01" }) {
           ref={videoRef}
           src={`/videos/${type}.mp4`}
           className="w-full h-full object-cover"
-          preload="true"
+          preload="auto"
           priority="true"
           loop
           muted

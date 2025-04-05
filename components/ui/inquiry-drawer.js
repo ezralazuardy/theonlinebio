@@ -293,6 +293,11 @@ export default function InquiryDrawer({ open, onClose }) {
                     Schedule a Meeting Instead
                   </Link>
                 </Button>
+                <DrawerClose className="flex lg:hidden" asChild>
+                  <Button className="cursor-pointer bg-white/30 text-white ms-1 me-2">
+                    Cancel
+                  </Button>
+                </DrawerClose>
               </DrawerFooter>
             </div>
           </DrawerContent>

@@ -34,13 +34,15 @@ export default function Showcase() {
   return (
     <div className="flex flex-col w-full">
       <ShowcaseLabel
-        className={`transition-all duration-500 transform ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+        className={`hidden lg:flex transition-all duration-500 transform ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
       />
       <div
         ref={containerRef}
-        className="lg:min-h-48 flex w-full py-8 lg:py-10 px-8 lg:px-20 space-x-6 justify-center items-center backdrop-filter backdrop-blur-md border-t border-r border-neutral-600/70"
+        className="lg:min-h-48 w-full py-8 lg:py-10 px-8 lg:px-20 backdrop-filter backdrop-blur-md border-t border-r border-neutral-600/70 overflow-x-auto"
       >
-        <ShowcaseItems />
+        <div className="mt-0 lg:mt-2 flex space-x-6 justify-start lg:justify-center items-center min-w-max pe-8 lg:pe-0">
+          <ShowcaseItems />
+        </div>
       </div>
     </div>
   );
@@ -49,7 +51,7 @@ export default function Showcase() {
 export function ShowcaseLabel({ className }) {
   return (
     <div className={`flex w-full ps-20 ${className}`}>
-      <div className="flex px-4 py-2 bg-white/70 text-sm text-black border-t border-l border-r border-neutral-600/70">
+      <div className="flex ps-4 pe-3 py-2 bg-white/70 text-sm text-black border-t border-l border-r border-neutral-600/70">
         Latest Showcase <ArrowDown className="size-4 ml-2 mt-0.5" />
       </div>
     </div>

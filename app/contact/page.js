@@ -16,7 +16,7 @@ import { useFormspark } from "@formspark/use-formspark";
 import { Turnstile } from "@marsidev/react-turnstile";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -57,9 +57,12 @@ export default function Contact() {
   const pathname = usePathname();
   const [isContactedDrawerOpen, setOpenContactedDrawer] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [hasScrollbar, setHasScrollbar] = useState(false);
   const [submit, submitting] = useFormspark({
     formId: process.env.NEXT_PUBLIC_FORMSPARK_CONTACT_FORM_ID,
   });
+  const containerRef = useRef(null);
   const {
     register,
     handleSubmit,
@@ -72,6 +75,42 @@ export default function Contact() {
       message: "",
     },
   });
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    const handleScroll = () => {
+      if (container && container.scrollTop > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    const checkForScrollbar = () => {
+      if (container) {
+        // Check if content height is greater than the container height
+        const hasScroll = container.scrollHeight > container.clientHeight;
+        setHasScrollbar(hasScroll);
+      }
+    };
+
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      handleScroll();
+
+      // Check initially and on resize
+      checkForScrollbar();
+      window.addEventListener("resize", checkForScrollbar);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", checkForScrollbar);
+      }
+    };
+  }, []);
 
   const handleOpenContactedDrawer = () => {
     setOpenContactedDrawer(true);
@@ -104,17 +143,20 @@ export default function Contact() {
           <Background type="cover-03" />
         </div>
         <div className="absolute z-10">
-          <Header />
+          <Header isScrolled={isScrolled} hasScrollbar={hasScrollbar} />
         </div>
-        <main className="absolute z-0 bottom-0 left-0 w-full h-full flex flex-col">
-          <div className="grid grid-cols-3 w-full h-full">
-            <div className="flex flex-col w-full border-r border-neutral-600/70 justify-end items-start px-20">
-              <h1 className="pb-10 text-6xl font-light leading-tight">
+        <main
+          ref={containerRef}
+          className="absolute z-0 bottom-0 left-0 w-full h-full overflow-y overflow-x-hidden flex flex-col"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-3 w-full h-full">
+            <div className="flex flex-col w-full border-r border-neutral-600/70 justify-end items-start px-10 lg:px-20">
+              <h1 className="mt-[25.5vh] mb-8 lg:mb-10 text-4xl lg:text-6xl font-light leading-tight">
                 We would love to hear from you!
               </h1>
             </div>
-            <div className="flex flex-col w-full col-span-2 pl-16 pe-20 justify-end backdrop-filter backdrop-blur-md">
-              <div className="grid grid-cols-2 gap-8 w-full justify-start backdrop-filter backdrop-blur-md">
+            <div className="flex flex-col w-full lg:col-span-2 pl-16 pe-20 justify-end backdrop-filter backdrop-blur-md">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full justify-start backdrop-filter backdrop-blur-md">
                 <div className="flex flex-col w-full h-auto">
                   <div className="flex flex-col w-full h-auto grow border border-neutral-600/70 rounded-md bg-white/10 px-6 py-4">
                     <div className="flex flex-col w-full justify-start mb-6">

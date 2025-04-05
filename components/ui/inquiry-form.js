@@ -67,9 +67,6 @@ export default function InquiryForm() {
   };
 
   const onSubmit = async (data) => {
-    setFormDrawerOpen(false);
-    setSubmittedDrawerOpen(true);
-    return;
     if (!turnstileToken) {
       toast.warning("Please verify you're human.");
       return;
@@ -100,7 +97,7 @@ export default function InquiryForm() {
 
   return (
     <>
-      <form className="flex w-full lg:max-w-sm items-center space-x-3">
+      <form className="flex w-full lg:min-w-sm items-center space-x-3">
         <style jsx global>{`
           .country.highlight,
           .country:hover {

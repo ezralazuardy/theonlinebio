@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({ isScrolled = false, hasScrollbar = false }) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,16 +17,18 @@ export default function Header() {
   return (
     <header className={`fixed w-full z-10 transition-all duration-300`}>
       <div
-        className={`mx-auto pt-8 pb-3 lg:py-10 px-10 lg:px-20 transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? "backdrop-filter backdrop-blur-md animate-fadeIn" : ""
+        className={`mx-auto py-6 lg:py-10 px-8 lg:px-20 transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen || isScrolled
+            ? "backdrop-filter backdrop-blur-md bg-white/10 animate-fadeIn"
+            : ""
         }`}
         style={{
           animation: isMobileMenuOpen ? "fadeIn 0.3s ease-in-out" : "none",
         }}
       >
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between items-center">
           {/* Logo Navigation */}
-          <div className="flex flex-col">
+          <div className="flex flex-col pt-0.5 lg:pt-0">
             <Link
               href="/"
               className="flex space-x-1.5 text-lg font-semibold transition-opacity duration-500 hover:opacity-80"
@@ -34,7 +36,7 @@ export default function Header() {
               <Shell className="size-4 mt-1.5" />
               <span>The Online Bio™</span>
             </Link>
-            <span className="w-auto">
+            <span className="hidden lg:flex w-auto pt-0.5">
               <Link
                 href="https://www.lazuardy.tech"
                 target="_blank"
@@ -85,7 +87,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="mt-1 md:hidden focus:outline-none cursor-pointer"
+            className={`my-auto md:hidden focus:outline-none cursor-pointer ${hasScrollbar ? "mr-0" : ""}`}
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -117,8 +119,18 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="grid grid-cols-2 md:hidden mt-6 space-y-4">
-            <div className="flex">
+          <nav className="grid grid-cols-2 md:hidden">
+            <div className="flex col-span-2 mt-1 mb-6">
+              <Link
+                href="https://www.lazuardy.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs opacity-70 hover:underline"
+              >
+                by Lazuardy
+              </Link>
+            </div>
+            <div className="flex mb-4">
               <Link
                 href="#"
                 className={`block opacity-60 transition-colors ${pathname === "/showcase" ? "underline" : "hover:underline"}`}
