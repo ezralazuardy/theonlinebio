@@ -38,7 +38,7 @@ export default function Showcase() {
       />
       <div
         ref={containerRef}
-        className="min-h-48 flex w-full py-10 px-20 space-x-6 justify-center items-center backdrop-filter backdrop-blur-md border-t border-r border-neutral-600/70"
+        className="lg:min-h-48 flex w-full py-8 lg:py-10 px-8 lg:px-20 space-x-6 justify-center items-center backdrop-filter backdrop-blur-md border-t border-r border-neutral-600/70"
       >
         <ShowcaseItems />
       </div>

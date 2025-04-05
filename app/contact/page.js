@@ -16,7 +16,6 @@ import { useFormspark } from "@formspark/use-formspark";
 import { Turnstile } from "@marsidev/react-turnstile";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Script from "next/script";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -100,10 +99,6 @@ export default function Contact() {
 
   return (
     <>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        strategy="afterInteractive"
-      />
       <div className="relative min-h-screen bg-black text-white">
         <div className="absolute inset-0 z-0">
           <Background type="cover-03" />

@@ -17,7 +17,6 @@ import { Turnstile } from "@marsidev/react-turnstile";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Script from "next/script";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
@@ -79,10 +78,6 @@ export default function InquiryDrawer({ open, onClose }) {
 
   return (
     <>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        strategy="afterInteractive"
-      />
       <div className="flex w-full max-w-sm items-center space-x-2">
         <style jsx global>{`
           .country.highlight,

@@ -2,6 +2,7 @@ import ComponentProvider from "@/components/provider/component-provider";
 import VercelProvider from "@/components/provider/vercel-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import Head from "next/head";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -71,6 +72,10 @@ export default function RootLayout({ children }) {
         {children}
         <ComponentProvider />
         <VercelProvider />
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

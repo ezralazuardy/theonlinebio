@@ -18,7 +18,6 @@ import { Turnstile } from "@marsidev/react-turnstile";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Script from "next/script";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
@@ -68,6 +67,9 @@ export default function InquiryForm() {
   };
 
   const onSubmit = async (data) => {
+    setFormDrawerOpen(false);
+    setSubmittedDrawerOpen(true);
+    return;
     if (!turnstileToken) {
       toast.warning("Please verify you're human.");
       return;
@@ -98,11 +100,7 @@ export default function InquiryForm() {
 
   return (
     <>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        strategy="afterInteractive"
-      />
-      <form className="flex w-full max-w-sm items-center space-x-2">
+      <form className="flex w-full lg:max-w-sm items-center space-x-3">
         <style jsx global>{`
           .country.highlight,
           .country:hover {
@@ -113,7 +111,7 @@ export default function InquiryForm() {
           type="email"
           placeholder="Your email address"
           title="Enter your email address"
-          className="focus:outline-none focus:ring-0 focus-visible:ring-0 text-white [&::selection]:bg-white [&::selection]:text-black"
+          className="bg-white/10 placeholder:text-neutral-300 focus:outline-none focus:ring-0 focus-visible:ring-0 text-white [&::selection]:bg-white [&::selection]:text-black"
           ref={emailInputRef}
           value={emailAddress}
           onChange={handleEmailChange}
@@ -332,7 +330,13 @@ export default function InquiryForm() {
                     Schedule a Meeting Instead
                   </Link>
                 </Button>
+                <DrawerClose className="flex lg:hidden" asChild>
+                  <Button className="cursor-pointer bg-white/30 text-white ms-1 me-2">
+                    Cancel
+                  </Button>
+                </DrawerClose>
               </DrawerFooter>
+              class
             </div>
           </DrawerContent>
         </Drawer>
@@ -354,7 +358,7 @@ export default function InquiryForm() {
                   />
                 </div>
                 <DrawerHeader className="px-10">
-                  <DrawerTitle className="text-white font-medium text-xl">
+                  <DrawerTitle className="text-white font-medium text-2xl lg:text-xl">
                     We&apos;ve Received Your Inquiry!
                   </DrawerTitle>
                   <DrawerDescription className="mt-2">

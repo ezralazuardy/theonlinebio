@@ -13,7 +13,6 @@ export default function Background({ type = "cover-01" }) {
       const video = videoRef.current;
 
       const handleLoaded = () => {
-        // setIsVideoLoaded(true);
         setTimeout(() => {
           setIsVideoLoaded(true);
         }, 1100);
@@ -57,6 +56,7 @@ export default function Background({ type = "cover-01" }) {
         className={`absolute top-0 left-0 w-full h-full ${isVideoLoaded ? "visible" : "invisible"}`}
       >
         <video
+          suppressHydrationWarning
           ref={videoRef}
           src={`/videos/${type}.mp4`}
           className="w-full h-full object-cover"
@@ -67,7 +67,7 @@ export default function Background({ type = "cover-01" }) {
           playsInline
         />
       </div>
-      <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
     </div>
   );
 }
