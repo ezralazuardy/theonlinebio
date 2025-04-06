@@ -31,7 +31,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col w-full">
             <ShowcaseLabel className="invisible" />
-            <div className="lg:min-h-48 flex flex-col w-full py-8 lg:py-10 ps-8 lg:ps-16 pe-8 lg:pe-20 justify-center backdrop-filter backdrop-blur-md border-t border-neutral-600/70">
+            <div className="lg:min-h-48 flex flex-col w-full py-8 lg:py-10 ps-8 lg:ps-16 pe-8 lg:pe-20 justify-center backdrop-filter backdrop-blur-md border-t border-b border-neutral-600/70">
               <p className="text-sm text-justify mb-6">
                 We craft unique and professional online portfolios, bios, and profile websites that
                 help Professionals and Entrepreneurs stand out and connect with their audience.
