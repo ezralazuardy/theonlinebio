@@ -1,6 +1,11 @@
 "use client";
 
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Shell } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,7 +22,7 @@ export default function Header({ isScrolled = false, hasScrollbar = false }) {
   return (
     <header className={`fixed w-full z-10 transition-all duration-300`}>
       <div
-        className={`mx-auto py-6 lg:py-10 px-8 lg:px-20 transition-all duration-300 ease-in-out ${
+        className={`mx-auto py-6 lg:py-8 px-8 lg:px-20 transition-all duration-300 ease-in-out ${
           isMobileMenuOpen || isScrolled
             ? "backdrop-filter backdrop-blur-md bg-white/10 animate-fadeIn"
             : ""

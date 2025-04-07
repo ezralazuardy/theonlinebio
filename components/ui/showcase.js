@@ -38,7 +38,7 @@ export default function Showcase() {
       />
       <div
         ref={containerRef}
-        className="lg:min-h-48 w-full py-8 lg:py-10 px-8 lg:px-20 backdrop-filter backdrop-blur-md border-t border-b border-r border-neutral-600/70 overflow-x-auto"
+        className="lg:min-h-48 w-full py-8 lg:py-10 px-8 lg:px-20 backdrop-filter backdrop-blur-md lg:border-t border-b border-r border-neutral-600/70 overflow-x-auto lg:overflow-x-hidden"
       >
         <div className="mt-0 lg:mt-2 flex space-x-6 justify-start lg:justify-center items-center min-w-max pe-8 lg:pe-0">
           <ShowcaseItems />

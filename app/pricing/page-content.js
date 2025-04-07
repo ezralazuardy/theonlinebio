@@ -3,7 +3,14 @@
 import Header from "@/components/ui/header";
 import InquiryDrawer from "@/components/ui/inquiry-drawer";
 import { isSafariBrowser } from "@/lib/utils";
-import { ArrowRight, AtSign, Check, Globe } from "lucide-react";
+import {
+  ArrowRight,
+  AtSign,
+  Check,
+  CloudUpload,
+  Globe,
+  Server,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export default function PricingContent() {
@@ -92,35 +99,35 @@ export default function PricingContent() {
                       <h2 className="text-xl font-medium">Basic</h2>
                     </div>
                     <div className="flex justify-end">
-                      <h2 className="text-md font-medium">$40 / mo</h2>
+                      <h2 className="text-md font-mono">IDR 3 mil</h2>
                     </div>
                   </div>
                   <p className="text-sm font-regular text-neutral-300 mb-4">
                     Best for starter individuals.
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
                     <span>Limited design reference options</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
                     <span>Mobile responsive design</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
-                    <span>Basic search engine optimization</span>
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
+                    <span>Basic SEO, Security, and Firewall</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
                     <span>Deploy to you.theonline.bio domain</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
-                    <span>SSL &amp; Firewall Security</span>
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
+                    <span>Added 4 months of server lifetime</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular">
-                    <Check className="size-4 mt-0.5" />
-                    <span>Literally ∞ web pages and revisions</span>
+                  <p className="flex space-x-2 text-xs font-regular">
+                    <Check className="size-4" />
+                    <span>Max 2× revision and ∞ web pages</span>
                   </p>
                 </div>
               </div>
@@ -139,37 +146,39 @@ export default function PricingContent() {
                       <h2 className="text-xl font-medium">Pro</h2>
                     </div>
                     <div className="flex justify-end col-span-2">
-                      <h2 className="text-md font-medium line-through mr-2">$75 / mo</h2>
+                      <h2 className="text-md font-medium font-mono line-through mr-2">
+                        IDR 5 mil
+                      </h2>
                       <ArrowRight className="size-4 mr-2 mt-1" />
-                      <h2 className="text-md font-medium">$50 / mo</h2>
+                      <h2 className="text-md font-mono">IDR 4 mil</h2>
                     </div>
                   </div>
                   <p className="text-sm font-regular text-neutral-300 mb-4">
                     Who dare to grow bigger.
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
                     <span>All basic features</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
                     <span>Custom design reference options</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
-                    <span>Advanced search engine optimization</span>
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
+                    <span>Advanced SEO, Security, and Firewall</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
                     <span>Advanced support availability (24/7)</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular mb-2">
-                    <Check className="size-4 mt-0.5" />
+                  <p className="flex space-x-2 text-xs font-regular mb-2">
+                    <Check className="size-4" />
                     <span>CMS (Blog, E-Commerce)</span>
                   </p>
-                  <p className="flex space-x-2 text-sm font-regular">
-                    <Check className="size-4 mt-0.5" />
-                    <span>Business email address (you@theonline.bio)</span>
+                  <p className="flex space-x-2 text-xs font-regular">
+                    <Check className="size-4" />
+                    <span>Max 5× revision and ∞ web pages</span>
                   </p>
                 </div>
               </div>
@@ -192,23 +201,41 @@ export default function PricingContent() {
                 </p>
                 <div className="grid grid-cols-3 w-full">
                   <div className="col-span-2 flex flex-col w-full">
-                    <p className="flex space-x-2 text-sm font-regular mb-2">
-                      <Globe className="size-4 mt-0.5" />
+                    <p className="flex space-x-2 text-xs font-regular mb-2">
+                      <Globe className="size-4" />
                       <span>Custom domain</span>
-                      <span className="hidden lg:flex">(e.g. yourdomain.com)</span>
+                      <span className="hidden lg:flex">
+                        (e.g. yourdomain.com)
+                      </span>
                     </p>
-                    <p className="flex space-x-2 text-sm font-regular">
-                      <AtSign className="size-4 mt-0.5" />
+                    <p className="flex space-x-2 text-xs font-regular mb-2">
+                      <AtSign className="size-4" />
                       <span>Custom email address</span>
-                      <span className="hidden lg:flex">(e.g. you@yourdomain.com)</span>
+                      <span className="hidden lg:flex">
+                        (e.g. you@yourdomain.com)
+                      </span>
+                    </p>
+                    <p className="flex space-x-2 text-xs font-regular mb-2">
+                      <Server className="size-4" />
+                      <span>Extend server lifetime</span>
+                    </p>
+                    <p className="flex space-x-2 text-xs font-regular">
+                      <CloudUpload className="size-4" />
+                      <span>Add revision or update (minor change)</span>
                     </p>
                   </div>
                   <div className="flex flex-col w-full font-medium">
-                    <p className="flex space-x-2 text-sm font-regular mb-2 justify-end lg:justify-start">
-                      <span>+ $10 / mo</span>
+                    <p className="flex space-x-2 text-xs font-regular mb-2 justify-end lg:justify-start">
+                      <span>+ IDR 500k / year</span>
                     </p>
-                    <p className="flex space-x-2 text-sm font-regular justify-end lg:justify-start">
-                      <span>+ $10 / mo</span>
+                    <p className="flex space-x-2 text-xs font-regular mb-2 justify-end lg:justify-start">
+                      <span>+ IDR 500k / 4 months</span>
+                    </p>
+                    <p className="flex space-x-2 text-xs font-regular mb-2 justify-end lg:justify-start">
+                      <span>+ IDR 100k / 4 months</span>
+                    </p>
+                    <p className="flex space-x-2 text-xs font-regular justify-end lg:justify-start">
+                      <span>+ IDR 150k / 4 revision</span>
                     </p>
                   </div>
                 </div>
@@ -217,16 +244,21 @@ export default function PricingContent() {
             <div
               className={`grid grid-cols-1 mt-8 mb-8 lg:mb-12 w-full justify-start ${isSafari ? "mb-28 lg:mb-12" : "mb-12"}`}
             >
-              <p className="text-xs lg:text-sm font-regular text-neutral-300 text-justify lg:text-left">
-                All prices are exclusive of 10% taxes. With a minimum subscription period of 4
-                months. <br className="hidden lg:flex" />
-                Development phase took at least 7 work days, depends on your requirements.
+              <p className="text-sm lg:text-xs font-regular text-neutral-300 text-justify lg:text-left">
+                All prices are exclusive of 10% taxes. With a minimum
+                subscription period of 4 months.{" "}
+                <br className="hidden lg:flex" />
+                Development phase took at least 7 work days, depends on your
+                requirements.
               </p>
             </div>
           </div>
         </div>
       </main>
-      <InquiryDrawer open={openInquiryDrawer} onClose={handleCloseInquiryDrawer} />
+      <InquiryDrawer
+        open={openInquiryDrawer}
+        onClose={handleCloseInquiryDrawer}
+      />
     </>
   );
 }
