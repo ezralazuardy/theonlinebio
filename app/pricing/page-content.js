@@ -3,14 +3,7 @@
 import Header from "@/components/ui/header";
 import InquiryDrawer from "@/components/ui/inquiry-drawer";
 import { isSafariBrowser } from "@/lib/utils";
-import {
-  ArrowRight,
-  AtSign,
-  Check,
-  CloudUpload,
-  Globe,
-  Server,
-} from "lucide-react";
+import { ArrowRight, AtSign, Check, CloudUpload, Globe, Server } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export default function PricingContent() {
@@ -146,9 +139,7 @@ export default function PricingContent() {
                       <h2 className="text-xl font-medium">Pro</h2>
                     </div>
                     <div className="flex justify-end col-span-2">
-                      <h2 className="text-md font-medium font-mono line-through mr-2">
-                        IDR 5 mil
-                      </h2>
+                      <h2 className="text-md font-medium font-mono line-through mr-2">IDR 5 mil</h2>
                       <ArrowRight className="size-4 mr-2 mt-1" />
                       <h2 className="text-md font-mono">IDR 4 mil</h2>
                     </div>
@@ -204,16 +195,12 @@ export default function PricingContent() {
                     <p className="flex space-x-2 text-xs font-regular mb-2">
                       <Globe className="size-4" />
                       <span>Custom domain</span>
-                      <span className="hidden lg:flex">
-                        (e.g. yourdomain.com)
-                      </span>
+                      <span className="hidden lg:flex">(e.g. yourdomain.com)</span>
                     </p>
                     <p className="flex space-x-2 text-xs font-regular mb-2">
                       <AtSign className="size-4" />
                       <span>Custom email address</span>
-                      <span className="hidden lg:flex">
-                        (e.g. you@yourdomain.com)
-                      </span>
+                      <span className="hidden lg:flex">(e.g. you@yourdomain.com)</span>
                     </p>
                     <p className="flex space-x-2 text-xs font-regular mb-2">
                       <Server className="size-4" />
@@ -245,20 +232,15 @@ export default function PricingContent() {
               className={`grid grid-cols-1 mt-8 mb-8 lg:mb-12 w-full justify-start ${isSafari ? "mb-28 lg:mb-12" : "mb-12"}`}
             >
               <p className="text-sm lg:text-xs font-regular text-neutral-300 text-justify lg:text-left">
-                All prices are exclusive of 10% taxes. With a minimum
-                subscription period of 4 months.{" "}
-                <br className="hidden lg:flex" />
-                Development phase took at least 7 work days, depends on your
-                requirements.
+                All prices are exclusive of 10% taxes. With a minimum subscription period of 4
+                months. <br className="hidden lg:flex" />
+                Development phase took at least 7 work days, depends on your requirements.
               </p>
             </div>
           </div>
         </div>
       </main>
-      <InquiryDrawer
-        open={openInquiryDrawer}
-        onClose={handleCloseInquiryDrawer}
-      />
+      <InquiryDrawer open={openInquiryDrawer} onClose={handleCloseInquiryDrawer} />
     </>
   );
 }
